@@ -1,3 +1,8 @@
+# basic rule. snakemake will find other rules that will gen this input.
+rule all: 
+    input: "temp/wc_all.png"
+
+
 rule count:
     input: 
         "data/{filename}.txt"
