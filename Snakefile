@@ -8,10 +8,17 @@ rule count:
 
 rule concat:
     input:
-        "temp/wc_A.txt",
-        "temp/wc_B.txt",
-        "temp/wc_C.txt"
+        expand("temp/wc_{filename}.txt", filename=['A', 'B', 'C']) 
     output: 
         "temp/wc_all.csv"
     script:
         "concat.py"
+
+rule plot:
+    input: 
+        "temp/wc_all.csv"
+    output:
+        "temp/wc_all.png"
+    script:
+        "plot.py"
+    
